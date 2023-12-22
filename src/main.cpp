@@ -1,5 +1,7 @@
 #include <iostream>
 
+#include "cmds/cmds.h"
+
 int main(int argc, char*argv[])
 {
     const std::string helpMessage = "Usage: " + std::string(argv[0]) + " <subcommand> [options]\n"
@@ -16,10 +18,13 @@ int main(int argc, char*argv[])
     std::string subcommand = argv[1];
     if (subcommand == "run") {
       std::cout << "Running EVM state-db service" << std::endl;
+      // TODO: Run the service
     } else if (subcommand == "set") {
       std::cout << "Setting a key-value pair in evm state" << std::endl;
+      return setDBValueCmdline(argc, argv);
     } else if (subcommand == "get") {
       std::cout << "Getting a value from evm state" << std::endl;
+      return getDBValueCmdline(argc, argv);
     } else if (subcommand == "help") {
       std::cout << helpMessage << std::endl;
     } else {
