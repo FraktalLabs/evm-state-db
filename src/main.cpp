@@ -18,6 +18,7 @@ int main(int argc, char*argv[])
     std::string subcommand = argv[1];
     if (subcommand == "run") {
       std::cout << "Running EVM state-db service" << std::endl;
+      return runDBCmdline(argc, argv);
       // TODO: Run the service
     } else if (subcommand == "set") {
       std::cout << "Setting a key-value pair in evm state" << std::endl;

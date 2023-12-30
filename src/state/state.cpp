@@ -1,5 +1,6 @@
 #include "state.h"
 
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <array>
@@ -11,6 +12,7 @@ std::string toHex(uint8_t byte) {
 }
 
 void State::snapshot(const std::string& filepath) {
+  std::cout << "Snapshotting state to " << filepath << std::endl;
 // For now : Use pretty-json like formatting
   std::string serialized = "[\n";
   for (auto it = state.begin(); it != state.end(); ++it) {

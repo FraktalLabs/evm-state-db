@@ -22,7 +22,7 @@ OBJS := $(SRCS_WITH_SRC_STRIPPED:%=$(BUILD_DIR)/%.o)
 
 all: evm-state-db
 
-clear:
+clean:
 	rm -rf $(BUILD_DIR) $(BIN_DIR)
 
 evm-state-db: $(OBJS)
@@ -41,3 +41,12 @@ get-test:
 
 set-test:
 	$(BIN_DIR)/evm-state-db set --snapshotFile ${TEST_SNAPSHOT_FILE} --contractAddress 4200000000000000000000000000000000000aaa --key 42 --value 512
+
+run-rpc-local:
+	$(BIN_DIR)/evm-state-db run --snapshotFile ${TEST_SNAPSHOT_FILE} --rpcPort 8999
+
+get-rpc-test:
+	curl -X POST -H "Content-Type: application/json" --data '--contractAddress 4200000000000000000000000000000000000aaa --key 42' http://localhost:8999
+
+set-rpc-test:
+	curl -X POST -H "Content-Type: application/json" --data '--contractAddress 4200000000000000000000000000000000000aaa --key 42 --value 512' http://localhost:8999
