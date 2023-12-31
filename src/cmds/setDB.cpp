@@ -4,9 +4,7 @@
 #include <iostream>
 
 #include <intx/intx.hpp>
-
-#include "../utils/utils.h"
-#include "../state/state.h"
+#include <evm-cpp-utils/types.h>
 
 struct SetValueData {
   std::string snapshotFile;
@@ -107,7 +105,8 @@ std::unique_ptr<SetValueData> parseSetCmdlineArgs(int argc, char *argv[]) {
 }
 
 void setDBValue(const SetValueData& data) {
-  data.state->setDBValue(data.contractAddress, data.key, data.value);
+  std::shared_ptr<Account> account = data.state->get(data.contractAddress);
+  account->setStorage(data.key, data.value);
 
   std::cout << "Set Value: " << intx::to_string(data.value) << std::endl;
 }

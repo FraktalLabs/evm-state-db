@@ -52,6 +52,7 @@ int RpcServer::Exec(const std::string& cmd) {
   char* argv[1024];
   char* p = (char*)cmd.c_str();
   // set argv[0] to rpc
+  // TODO: Fix this
   argv[argc++] = "rpc";
   while (*p != '\0') {
     if (*p == ' ') {
@@ -70,6 +71,8 @@ int RpcServer::Exec(const std::string& cmd) {
   for (int i = 0; i < argc; ++i) {
     std::cout << argv[i] << " ";
   }
+
+  return 0;
 
   //std::string subcommand = argv[1];
   //int result = 0;

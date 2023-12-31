@@ -3,7 +3,7 @@
 #include <string>
 #include <memory>
 
-#include "../state/state.h"
+#include <evm-cpp-utils/types.h>
 
 class RpcServer {
 public:

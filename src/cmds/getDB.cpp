@@ -4,9 +4,8 @@
 #include <iostream>
 
 #include <intx/intx.hpp>
-
-#include "../utils/utils.h"
-#include "../state/state.h"
+#include <evm-cpp-utils/types.h>
+#include <evm-cpp-utils/utils.h>
 
 struct GetValueData {
   std::shared_ptr<State> state;
@@ -91,7 +90,8 @@ std::unique_ptr<GetValueData> parseGetCmdlineArgs(int argc, char *argv[]) {
 }
 
 void getDBValue(const GetValueData& data) {
-  auto value = data.state->getDBValue(data.contractAddress, data.key);
+  std::shared_ptr<Account> account = data.state->get(data.contractAddress);
+  auto value = account->getStorage(data.key);
 
   std::cout << "Value: " << intx::to_string(value) << std::endl;
 }

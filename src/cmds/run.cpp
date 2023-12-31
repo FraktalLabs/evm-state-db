@@ -3,11 +3,10 @@
 #include <memory>
 #include <iostream>
 
-#include <intx/intx.hpp>
-
-#include "../utils/utils.h"
-#include "../state/state.h"
 #include "rpc.h"
+
+#include <intx/intx.hpp>
+#include <evm-cpp-utils/types.h>
 
 struct RunData {
   std::string snapshotFile;
