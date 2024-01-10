@@ -48,6 +48,8 @@ curl -X POST -H "Content-Type: application/json" --data '--contractAddress 42000
 curl -X POST -H "Content-Type: application/json" --data '--contractAddress 4200000000000000000000000000000000000000 --key 42 --value 512' http://localhost:8999
 ```
 
+**Note** : Use `-h` flag on each sub-command to see more options
+
 ## Dependencies
 
 - [intx][intx] : 256-bit (32-byte) unsigned integers
